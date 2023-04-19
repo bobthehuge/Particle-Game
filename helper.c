@@ -1,8 +1,5 @@
 #include "common.h"
 
-#define BOARD_WIDTH 0
-#define BOARD_HEIGHT 0
-
 GLuint NewTexture(unsigned char* b)
 {
     GLuint tex;
@@ -12,8 +9,8 @@ GLuint NewTexture(unsigned char* b)
     glBindTexture(GL_TEXTURE_2D, tex);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, BOARD_WIDTH, BOARD_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, b);
 
