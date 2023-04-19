@@ -16,7 +16,7 @@ GLuint program;
 GLuint vert;
 GLuint frag;
 
-const double fpsLimit = 0;
+const double fpsLimit = 1 / FPS;
 double lastUpdateTime = 0;  // number of seconds since the last loop
 double lastFrameTime = 0;
 
@@ -56,6 +56,7 @@ void bglOnUpdate()
 
 void bglOnUnload()
 {
+    GameUnload();
     glDetachShader(program, vert);
     glDetachShader(program, frag);
     glDeleteTextures(1, &tex);
@@ -79,8 +80,8 @@ int main(void)
 
     bglInit();
     
-    vert = NewShader(GL_VERTEX_SHADER, "Shaders/vert.glsl");
-    frag = NewShader(GL_FRAGMENT_SHADER, "Shaders/frag.glsl");
+    vert = NewShader(GL_VERTEX_SHADER, "../Shaders/vert.glsl");
+    frag = NewShader(GL_FRAGMENT_SHADER, "../Shaders/frag.glsl");
 
     program = glCreateProgram();
     glAttachShader(program, vert);

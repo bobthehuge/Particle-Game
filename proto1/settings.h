@@ -3,15 +3,15 @@
 
 #define BOARD_WIDTH 320
 #define BOARD_HEIGHT 180
-#define FPS 120
+#define FPS 60
 
 #define ALIVE 0x00FFFFFF
 #define DEAD 0x00000000
 
-#define CELL_COUNT 250
+#define CELL_COUNT 32
 #define DEFAULT_CELL_SIZE 1
 #define DEFAULT_MOV_SPEED 10
-#define TRAIL_SIZE 16
+#define TRAIL_SIZE 5
 #define EVAPORATE_SPEED 16
 #define CELL_TURN_SPEED 0.03125
 

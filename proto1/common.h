@@ -35,6 +35,7 @@ typedef struct Cell
 
 void GameInit(void);
 void GameUpdate(double deltaTime);
+void GameUnload(void);
 
 GLFWwindow* WindowCreate();
 

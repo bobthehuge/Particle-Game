@@ -159,7 +159,7 @@ void GameInit()
 
 void GameUpdate(double deltaTime)
 {
-    for(int mov = 0; mov < 1; mov++)
+    for(int mov = 0; mov < DEFAULT_MOV_SPEED; mov++)
     {
         for(int i = 0; i < CELL_COUNT; i++)
         {
@@ -168,7 +168,7 @@ void GameUpdate(double deltaTime)
         }
     }
 
-    if(frame_count >= TRAIL_SIZE)
+    if(frame_count >= 0)
     {
         for(int i = 0; i < BOARD_HEIGHT; i++)
         {
@@ -178,7 +178,7 @@ void GameUpdate(double deltaTime)
 
                 uint color = get(Board, i, j) - (uint)((value << 16) + (value << 8) + value);
 
-                set(Board, i, j, color <= 0x00101010 || color >= 0x00FFFFFF ? DEAD : color);
+                set(Board, i, j, color >= 0x00FFFFFF ? DEAD : color);
                 DiffuseTrail(i, j, deltaTime);
             }
         }
@@ -187,4 +187,10 @@ void GameUpdate(double deltaTime)
     }  
 
     frame_count++;
+}
+
+void GameUnload()
+{
+    for(int i = 0; i < CELL_COUNT; i++)
+        free(CellList[i]);
 }
